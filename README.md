@@ -24,7 +24,7 @@ Returns all Taylor Swift Albums.
 
 - **Endpoint**: `/albums`
 - **Method**: GET
-- **Example Request**: Gets lyricsfor song with song_id 10
+- **Example Request**: Gets lyrics for song with song_id 10
     ```bash
     curl \
     -X GET https://taylor-swift-api.sarbo.workers.dev/albums
@@ -188,7 +188,7 @@ Retrieve all songs within ALL albums.
 
 - **Endpoint**: `/songs`
 - **Method**: GET
-- **Example Request**: Gets lyricsfor song with song_id 10
+- **Example Request**: Gets all songs
     ```bash
     curl \
     -X GET https://taylor-swift-api.sarbo.workers.dev/songs
@@ -244,7 +244,7 @@ Retrieve the lyrics for a given song.
 - **Method**: GET
 - **Parameters**:
   - `songID` (path parameter): ID of the song (integer)
-- **Example Request**: Gets lyricsfor song with song_id 10
+- **Example Request**: Gets lyrics for song with song_id 10
     ```bash
     curl \
     -X GET https://taylor-swift-api.sarbo.workers.dev/lyrics/10
@@ -259,7 +259,7 @@ Retrieve the lyrics for a given song.
   }
   ```
 
-### Get lyrics from songs
+### Get N Paragraphs of Lyrics
 
 Retrieve N paragraphs of lyrics from songs. The songs can be either random or in the default order.
 
@@ -270,7 +270,7 @@ The endpoint will keep retrieving lyrics from a song until there are no lyrics l
 - **Parameters**:
   - `shouldRandomizeLyrics` (query parameter): Flag indicating whether to randomize the order of lyrics (boolean)
   - `numberOfParagraphs` REQUIRED (query parameter): Number of paragraphs of lyrics to retrieve (integer)
-- **Example Request**: Returns 2 paragraphs of lyrics from songs.
+- **Example Request**: Returns 2 paragraphs of lyrics from songs from random songs.
     ```bash
     curl \
     -X GET https://taylor-swift-api.sarbo.workers.dev/lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2
