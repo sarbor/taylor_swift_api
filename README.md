@@ -27,7 +27,7 @@ Returns all Taylor Swift Albums.
 - **Example Request**: Gets lyrics for song with song_id 10
     ```bash
     curl \
-    -X GET https://taylor-swift-api.sarbo.workers.dev/albums
+    -X GET "https://taylor-swift-api.sarbo.workers.dev/albums"
     ```
 - **Response**: Returns an array of album objects.
 
@@ -62,7 +62,7 @@ Retrieve all songs within a specific album.
 - **Example Request**: Returns all somgs within album with album_id 10
     ```bash
     curl \
-    -X GET https://taylor-swift-api.sarbo.workers.dev/albums/10
+    -X GET "https://taylor-swift-api.sarbo.workers.dev/albums/10"
     ```
 - **Response**: Returns an array of song objects.
 
@@ -191,7 +191,7 @@ Retrieve all songs within ALL albums.
 - **Example Request**: Gets all songs
     ```bash
     curl \
-    -X GET https://taylor-swift-api.sarbo.workers.dev/songs
+    -X GET "https://taylor-swift-api.sarbo.workers.dev/songs"
     ```
 - **Response**: Returns an array of song objects.
 
@@ -223,7 +223,7 @@ Retrieve song information for a specific song.
 - **Example Request**: Gets song info for song with song_id 10
     ```bash
     curl \
-    -X GET https://taylor-swift-api.sarbo.workers.dev/songs/10
+    -X GET "https://taylor-swift-api.sarbo.workers.dev/songs/10"
     ```
 - **Response**: Returns a song object.
 
@@ -247,7 +247,7 @@ Retrieve the lyrics for a given song.
 - **Example Request**: Gets lyrics for song with song_id 10
     ```bash
     curl \
-    -X GET https://taylor-swift-api.sarbo.workers.dev/lyrics/10
+    -X GET "https://taylor-swift-api.sarbo.workers.dev/lyrics/10"
     ```
 - **Response**: Returns a song's lyrics.
 
@@ -273,7 +273,7 @@ The endpoint will keep retrieving lyrics from a song until there are no lyrics l
 - **Example Request**: Returns 2 paragraphs of lyrics from songs from random songs.
     ```bash
     curl \
-    -X GET https://taylor-swift-api.sarbo.workers.dev/lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2
+    -X GET "https://taylor-swift-api.sarbo.workers.dev/lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2"
     ```
 
 - **Response**: Returns 2 paragraphs of lyrics from randomized songs songs.
