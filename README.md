@@ -16,6 +16,11 @@ Returns all Taylor Swift Albums.
 
 - **Endpoint**: `/albums`
 - **Method**: GET
+- **Example Request**: Gets lyricsfor song with song_id 10
+    ```bash
+    curl \
+    -X GET https://pscale-demo.sarbo.workers.dev/albums
+    ```
 - **Response**: Returns an array of album objects.
 
   ```json
@@ -48,7 +53,8 @@ Retrieve all songs within a specific album.
 
 - **Example Request**: Returns all somgs within album with album_id 10
     ```bash
-    /albums/10
+    curl \
+    -X GET https://pscale-demo.sarbo.workers.dev/albums/10
     ```
 - **Response**: Returns an array of song objects.
 
@@ -174,6 +180,11 @@ Retrieve all songs within ALL albums.
 
 - **Endpoint**: `/songs`
 - **Method**: GET
+- **Example Request**: Gets lyricsfor song with song_id 10
+    ```bash
+    curl \
+    -X GET https://pscale-demo.sarbo.workers.dev/songs
+    ```
 - **Response**: Returns an array of song objects.
 
   ```json
@@ -203,7 +214,8 @@ Retrieve song information for a specific song.
   - `songID` (path parameter): ID of the song (integer)
 - **Example Request**: Gets song info for song with song_id 10
     ```bash
-    /songs/10
+    curl \
+    -X GET https://pscale-demo.sarbo.workers.dev/songs/10
     ```
 - **Response**: Returns a song object.
 
@@ -226,7 +238,8 @@ Retrieve the lyrics for a given song.
   - `songID` (path parameter): ID of the song (integer)
 - **Example Request**: Gets lyricsfor song with song_id 10
     ```bash
-    /lyrics/10
+    curl \
+    -X GET https://pscale-demo.sarbo.workers.dev/lyrics/10
     ```
 - **Response**: Returns a song's lyrics.
 
@@ -251,17 +264,18 @@ The endpoint will keep retrieving lyrics from a song until there are no lyrics l
   - `numberOfParagraphs` REQUIRED (query parameter): Number of paragraphs of lyrics to retrieve (integer)
 - **Example Request**: Returns 2 paragraphs of lyrics from songs.
     ```bash
-    /lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2
+    curl \
+    -X GET https://pscale-demo.sarbo.workers.dev/lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2
     ```
 
 - **Response**: Returns 2 paragraphs of lyrics from randomized songs songs.
 
   ```json
     {
-    "lyrics": [
-        "He says he doesn't believe anything much he hears these days\nHe says, \"Why fall in love, just so you can watch it go away?\"\nHe spends most of his nights wishing it was how it used to be\nHe spends most of his flights getting pulled down by gravity\nI call, just checking up on him\nHe's up, 3 A.M., pacing\nHe says, \"It's not just a phase I'm in\"\nMy voice comes out begging",
-        "All this time I didn't know\nYou were breaking down\nI'd fall to pieces on the floor\nIf you weren't around\nToo young to know it gets better\nI'll be summer sun for you forever\nForever winter if you go"
-    ],
-    "numParagraphs": 2
+        "lyrics": [
+            "He says he doesn't believe anything much he hears these days\nHe says, \"Why fall in love, just so you can watch it go away?\"\nHe spends most of his nights wishing it was how it used to be\nHe spends most of his flights getting pulled down by gravity\nI call, just checking up on him\nHe's up, 3 A.M., pacing\nHe says, \"It's not just a phase I'm in\"\nMy voice comes out begging",
+            "All this time I didn't know\nYou were breaking down\nI'd fall to pieces on the floor\nIf you weren't around\nToo young to know it gets better\nI'll be summer sun for you forever\nForever winter if you go"
+        ],
+        "numParagraphs": 2
     }
  ```
