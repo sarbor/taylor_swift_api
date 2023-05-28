@@ -9,7 +9,7 @@ This API is hosted on Cloudflare Workers and the data is stored inside PlanetSca
 [User Friendly Documentation for this API](https://bump.sh/sarbor/doc/taylor-swift-api)
 
 Projects using this API
-+ [Taylor Ipsum Generator](https://bump.sh/sarbor/doc/taylor-swift-api)
++ [Taylor Ipsum Generator](https://taylor-ipsum-website.pages.dev/)
 
 ## Base URL
 
