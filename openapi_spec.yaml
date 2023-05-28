@@ -3,7 +3,7 @@ info:
   title: Taylor Swift API
   version: 1.0.0
 servers:
-  - url: https://pscale-demo.sarbo.workers.dev
+  - url: https://taylor-swift-api.sarbo.workers.dev
 paths:
   /albums:
     get:
