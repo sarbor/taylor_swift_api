@@ -1,0 +1,172 @@
+openapi: 3.0.3
+info:
+  title: Taylor Swift API
+  version: 1.0.0
+servers:
+  - url: https://pscale-demo.sarbo.workers.dev
+paths:
+  /albums:
+    get:
+      summary: Get all albums
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    album_id:
+                      type: integer
+                    title:
+                      type: string
+                    artist_id:
+                      type: integer
+                    release_date:
+                      type: string
+                      format: date
+        '500':
+          description: Internal Server Error
+  /albums/{albumID}:
+    get:
+      summary: Get songs within an album
+      parameters:
+        - name: albumID
+          in: path
+          description: ID of the album
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    song_id:
+                      type: integer
+                    title:
+                      type: string
+                    album_id:
+                      type: integer
+        '404':
+          description: Album not found
+        '500':
+          description: Internal Server Error
+  /songs:
+    get:
+      summary: Get all songs
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    song_id:
+                      type: integer
+                    title:
+                      type: string
+                    album_id:
+                      type: integer
+        '500':
+          description: Internal Server Error
+  /songs/{songID}:
+    get:
+      summary: Get song information for a specific song
+      parameters:
+        - name: songID
+          in: path
+          description: ID of the song
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  song_id:
+                    type: integer
+                  song_title:
+                    type: string
+                  album_id:
+                    type: integer
+        '404':
+          description: Song not found
+        '500':
+          description: Internal Server Error
+  /lyrics/{songID}:
+    get:
+      summary: Get lyrics for a given song
+      parameters:
+        - name: songID
+          in: path
+          description: ID of the song
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  song_id:
+                    type: integer
+                  song_title:
+                    type: string
+                  lyrics:
+                    type: string
+        '404':
+          description: Lyrics not found
+        '500':
+          description: Internal Server Error
+  /lyrics:
+    get:
+      summary: Get N paragraphs of lyrics from songs
+      parameters:
+        - name: shouldRandomizeLyrics
+          in: query
+          description: Indicates whether to randomize the lyrics or use default order
+          schema:
+            type: string
+            enum: [true, false]
+        - name: numberOfParagraphs
+          in: query
+          description: Number of paragraphs of lyrics to retrieve
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lyrics:
+                    type: array
+                    items:
+                      type: string
+                  num_paragraphs:
+                    type: integer
+        '400':
+          description: Invalid request parameters
+        '500':
+          description: Internal Server Error
