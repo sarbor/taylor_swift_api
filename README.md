@@ -1,6 +1,6 @@
 # Taylor Swift API
 
-The Taylor Swift API allows you to access information about Taylor Swift's albums, songs, and lyrics. You can retrieve data such as album details, songs within an album, all songs, and lyrics information for a specific song.
+The Taylor Swift API allows you to access information about Taylor Swift's albums, songs, and lyrics. You can retrieve data such as album details, song info and lyrics for a specific song.
 
 You can even request N verses of lyrics from the api to use as Lorem Ipsum.
 
