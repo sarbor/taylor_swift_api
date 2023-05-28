@@ -2,7 +2,14 @@
 
 The Taylor Swift API allows you to access information about Taylor Swift's albums, songs, and lyrics. You can retrieve data such as album details, songs within an album, all songs, and lyrics information for a specific song.
 
-You can even request N verses of lyrics from the api to use as Lorem Ipsum
+You can even request N verses of lyrics from the api to use as Lorem Ipsum.
+
+This API is hosted on Cloudflare Workers and the data is stored inside PlanetScale
+
+[User Friendly Documentation for this API](https://bump.sh/sarbor/doc/taylor-swift-api)
+
+Projects using this API
++ [Taylor Ipsum Generator](https://bump.sh/sarbor/doc/taylor-swift-api)
 
 ## Base URL
 
