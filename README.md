@@ -70,7 +70,7 @@ Retrieve all songs within a specific album.
     {
         "song_id": 147,
         "title": "Snow on the Beach",
-        "/albums/10": 10
+        "album_id": 10
     },
     {
         "song_id": 148,
