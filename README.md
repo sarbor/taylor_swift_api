@@ -36,13 +36,11 @@ Returns all Taylor Swift Albums.
     {
       "album_id": 1,
       "title": "1989",
-      "artist_id": 1,
       "release_date": "2014-10-27"
     },
     {
       "album_id": 2,
       "title": "Taylor Swift",
-      "artist_id": 1,
       "release_date": "2006-10-24"
     },
     ...

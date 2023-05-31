@@ -22,8 +22,6 @@ paths:
                       type: integer
                     title:
                       type: string
-                    artist_id:
-                      type: integer
                     release_date:
                       type: string
                       format: date
