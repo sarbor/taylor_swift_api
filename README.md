@@ -1,7 +1,13 @@
 # Taylor Swift API
 [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v1/monitor/q932.svg)](https://taylorswiftapi.betteruptime.com/)
 
-Serving ~1000 Requests a day
+### UPDATE: 
+
+I have taken down the API as there are too many users and usage for this API consistently goes above CloudFlare free plan limits
+
+It was fun while it lasted :) 
+
+<img width="1499" alt="Screen Shot 2023-11-24 at 3 15 55 AM" src="https://github.com/sarbor/taylor_swift_api/assets/15257226/bb2723fb-5320-4242-8fd6-a8cb318e4b0b">
 
 The Taylor Swift API allows you to access information about Taylor Swift's albums, songs, and lyrics. You can retrieve data such as album details, song info and lyrics for a specific song.
 
