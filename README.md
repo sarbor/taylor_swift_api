@@ -1,4 +1,4 @@
-# Taylor Swift API
+# Taylor Swift API [DEPRECATED]
 [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v1/monitor/q932.svg)](https://taylorswiftapi.betteruptime.com/)
 
 ### UPDATE: 
