@@ -1,5 +1,4 @@
 # Taylor Swift API
-[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v1/monitor/q932.svg)](https://taylorswiftapi.betteruptime.com/)
 
 Peak traffic of 170k requests a day
 
