@@ -1,0 +1,12 @@
+[
+    {"album_id": 1, "title": "Taylor Swift", "release_date": "2006-10-24"},
+    {"album_id": 2, "title": "Fearless", "release_date": "2008-11-11"},
+    {"album_id": 3, "title": "Speak Now", "release_date": "2010-10-25"},
+    {"album_id": 4, "title": "Red", "release_date": "2012-10-22"},
+    {"album_id": 5, "title": "1989", "release_date": "2014-10-27"},
+    {"album_id": 6, "title": "Reputation", "release_date": "2017-11-10"},
+    {"album_id": 7, "title": "Lover", "release_date": "2019-08-23"},
+    {"album_id": 8, "title": "folklore", "release_date": "2020-07-24"},
+    {"album_id": 9, "title": "evermore", "release_date": "2020-12-11"},
+    {"album_id": 10, "title": "Midnights", "release_date": "2022-10-21"}
+]
