@@ -1,0 +1,16 @@
+{
+  "name": "taylor_swift_api",
+  "version": "1.0.0",
+  "description": "Peak traffic of 170k requests a day",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.6.8",
+    "jest": "^29.7.0"
+  }
+}
