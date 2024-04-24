@@ -1,0 +1,3 @@
+[submodule "taylor_swift_data"]
+	path = taylor_swift_data
+	url = https://github.com/adashofdata/taylor_swift_data.git
