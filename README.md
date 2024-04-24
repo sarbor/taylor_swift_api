@@ -1,9 +1,10 @@
-# Taylor Swift API
+# Taylor Swift API - FastAPI Implementation
+
+This project is a FastAPI implementation of a Taylor Swift API, which provides access to Taylor Swift's albums, songs, and lyrics data.
 
 Peak traffic of 170k requests a day
 
 <img width="1499" alt="Screen Shot 2023-11-24 at 3 15 55 AM" src="https://github.com/sarbor/taylor_swift_api/assets/15257226/bb2723fb-5320-4242-8fd6-a8cb318e4b0b">
-
 
 The Taylor Swift API allows you to access information about Taylor Swift's albums, songs, and lyrics. You can retrieve data such as album details, song info and lyrics for a specific song.
 
@@ -16,276 +17,90 @@ This API is hosted on Cloudflare Workers and the data is stored inside PlanetSca
 Projects using this API
 + [Taylor Ipsum Generator](https://taylor-ipsum-website.pages.dev/)
 
-## Base URL
+## Features
 
-The API is hosted at: `https://taylor-swift-api.sarbo.workers.dev`
+- RESTful API endpoints to retrieve albums, songs, and lyrics.
+- Data served in JSON format.
+- Simple and intuitive API design.
 
-## Endpoints
+## Local Setup
 
-### Get all albums
+To run this project locally, follow these steps:
 
-Returns all Taylor Swift Albums.
-
-- **Endpoint**: `/albums`
-- **Method**: GET
-- **Example Request**: Gets lyrics for song with song_id 10
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/albums"
-    ```
-- **Response**: Returns an array of album objects.
-
-  ```json
-  [
-    {
-      "album_id": 1,
-      "title": "1989",
-      "release_date": "2014-10-27"
-    },
-    {
-      "album_id": 2,
-      "title": "Taylor Swift",
-      "release_date": "2006-10-24"
-    },
-    ...
-  ]
-  ```
-
-
-### Get songs within an album
-
-Retrieve all songs within a specific album.
-
-- **Endpoint**: `/albums/{albumID}`
-- **Method**: GET
-- **Parameters**:
-  - `albumID` (integer, path): The ID of the album.
-
-- **Example Request**: Returns all somgs within album with album_id 10
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/albums/10"
-    ```
-- **Response**: Returns an array of song objects.
-
-  ```json
-  [
-    {
-        "song_id": 147,
-        "title": "Snow on the Beach",
-        "album_id": 10
-    },
-    {
-        "song_id": 148,
-        "title": "Maroon",
-        "album_id": 10
-    },
-    {
-        "song_id": 149,
-        "title": "Bejeweled",
-        "album_id": 10
-    },
-    {
-        "song_id": 150,
-        "title": "Labyrinth",
-        "album_id": 10
-    },
-    {
-        "song_id": 151,
-        "title": "Mastermind",
-        "album_id": 10
-    },
-    {
-        "song_id": 152,
-        "title": "Lavender Haze",
-        "album_id": 10
-    },
-    {
-        "song_id": 153,
-        "title": "Sweet Nothing",
-        "album_id": 10
-    },
-    {
-        "song_id": 154,
-        "title": "Vigilante Shit",
-        "album_id": 10
-    },
-    {
-        "song_id": 155,
-        "title": "Midnight Rain",
-        "album_id": 10
-    },
-    {
-        "song_id": 156,
-        "title": "Karma",
-        "album_id": 10
-    },
-    {
-        "song_id": 157,
-        "title": "Anti-Hero",
-        "album_id": 10
-    },
-    {
-        "song_id": 158,
-        "title": "Question…?",
-        "album_id": 10
-    },
-    {
-        "song_id": 159,
-        "title": "You're on Your Own, Kid",
-        "album_id": 10
-    },
-    {
-        "song_id": 160,
-        "title": "The Great War",
-        "album_id": 10
-    },
-    {
-        "song_id": 161,
-        "title": "High Infidelity",
-        "album_id": 10
-    },
-    {
-        "song_id": 162,
-        "title": "Would've, Could've, Should've",
-        "album_id": 10
-    },
-    {
-        "song_id": 163,
-        "title": "Bigger Than the Whole Sky",
-        "album_id": 10
-    },
-    {
-        "song_id": 164,
-        "title": "Paris",
-        "album_id": 10
-    },
-    {
-        "song_id": 165,
-        "title": "Glitch",
-        "album_id": 10
-    },
-    {
-        "song_id": 166,
-        "title": "Dear Reader",
-        "album_id": 10
-    },
-    {
-        "song_id": 176,
-        "title": "Hits Different",
-        "album_id": 10
-    },
-    {
-        "song_id": 177,
-        "title": "You're Losing Me",
-        "album_id": 10
-    }
-  ]
+1. Clone the repository:
    ```
- 
+   git clone https://github.com/your-username/taylorSwiftAPIDevin.git
+   cd taylorSwiftAPIDevin
+   ```
 
-### Get all songs
+2. Set up a virtual environment (optional but recommended):
+   ```
+   python -m venv venv
+   source venv/bin/activate
+   ```
 
-Retrieve all songs within ALL albums.
+3. Install the dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
 
-- **Endpoint**: `/songs`
-- **Method**: GET
-- **Example Request**: Gets all songs
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/songs"
-    ```
-- **Response**: Returns an array of song objects.
+4. Start the FastAPI server:
+   ```
+   uvicorn main:app --reload
+   ```
 
-  ```json
-  [
-    {
-      "song_id": 1,
-      "title": "Blank Space",
-      "album_id": 1
-    },
-    {
-      "song_id": 2,
-      "title": "Style",
-      "album_id": 1
-    },
-    ...
-  ]
-  ```
+The API will be available at `http://127.0.0.1:8000`.
 
+## Deployment to Heroku
 
-### Get song information for a specific song
+To deploy this application to Heroku, you will need an existing Heroku account and the Heroku CLI installed.
 
-Retrieve song information for a specific song.
+1. Log in to Heroku:
+   ```
+   heroku login
+   ```
 
-- **Endpoint**: `/songs/{songID}`
-- **Method**: GET
-- **Parameters**:
-  - `songID` (path parameter): ID of the song (integer)
-- **Example Request**: Gets song info for song with song_id 10
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/songs/10"
-    ```
-- **Response**: Returns a song object.
+2. Create a new Heroku app:
+   ```
+   heroku create your-app-name
+   ```
 
-  ```json
-  {
-    "song_id": 10,
-    "song_title": "Wonderland",
-    "album_id": 1
-  }
-  ```
+3. Set up the Git remote for Heroku:
+   ```
+   heroku git:remote -a your-app-name
+   ```
 
+4. Push the code to Heroku:
+   ```
+   git push heroku main
+   ```
 
-### Get lyrics for a given song
+5. Ensure at least one instance of the app is running:
+   ```
+   heroku ps:scale web=1
+   ```
 
-Retrieve the lyrics for a given song.
+6. Open the app in your browser:
+   ```
+   heroku open
+   ```
 
-- **Endpoint**: `/lyrics/{songID}`
-- **Method**: GET
-- **Parameters**:
-  - `songID` (path parameter): ID of the song (integer)
-- **Example Request**: Gets lyrics for song with song_id 10
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/lyrics/10"
-    ```
-- **Response**: Returns a song's lyrics.
+For more information on deploying to Heroku, visit the [Heroku Dev Center](https://devcenter.heroku.com/articles/getting-started-with-python).
 
-  ```json
-  {
-    "song_id": 10,
-    "song_title": "Wonderland",
-    "lyrics": "Flashing lights and we\nTook a wrong turn and we\nFell down a rabbit hole\n\nYou held on tight to me\n'Cause nothing's as it seems\nAnd spinning out of control\n\nDidn't they tell us don't rush into things?\nDidn't you flash your green eyes at me?\nHaven't you heard what becomes of curious minds?\n\nOh\n\nDidn't it all seem new and exciting?\nI felt your arms twisting around me\nI should have slept with one eye open at night\n\nWe found wonderland\nYou and I got lost in it\nAnd we pretended it could last forever\nEh\nWe found wonderland\nYou and I got lost in it\nAnd life was never worse but never better\nEh eh\n\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\n\nSo we went on our way\nToo in love to think straight\nAll alone or so it seemed\n\nBut there were strangers watching\nAnd whispers turned to talking\nAnd talking turned to screams\n\nOh\n\nDidn't they tell us don't rush into things?\nDidn't you flash your green eyes at me?\nDidn't you calm my fears with a Cheshire cat smile?\n\nOh\n\nDidn't it all seem new and exciting?\nI felt your arms twisting around me\nIt's all fun and games 'til somebody loses their mind\n\nBut darling, we found wonderland\nYou and I got lost in it\nAnd we pretended it could last forever\nEh\nWe found wonderland\nYou and I got lost in it\nAnd life was never worse but never better\nEh eh\n\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\n\nI reached for you but you were gone\nI knew I had to go back home\nYou searched the world for something else to make you feel like what we had\nAnd in the end in wonderland we both went mad\n\nOh\n\nWe found wonderland\nYou and I got lost in it\nAnd we pretended it could last forever (last forever)\nEh eh\nWe found wonderland\nYou and I got lost in it (got lost in it)\nAnd life was never worse but never better (never better)\nEh eh\n\nWe found wonderland\nYou and I got lost in it (wonderland)\nAnd we pretended it could last forever (in wonderland)\n\nWe found wonderland\nYou and I got lost in it (wonderland)\nAnd life was never worse but never better\nIn wonderland"
-  }
-  ```
+## API Endpoints
 
-### Get N Paragraphs of Lyrics
+The following endpoints are available:
 
-Retrieve N paragraphs of lyrics from songs. The songs can be either random or in the default order.
+- `GET /albums`: Retrieve all albums.
+- `GET /albums/{albumID}`: Retrieve songs within an album.
+- `GET /songs`: Retrieve all songs.
+- `GET /songs/{songID}`: Retrieve song information for a specific song.
+- `GET /lyrics/{songID}`: Retrieve lyrics for a given song.
 
-The endpoint will keep retrieving lyrics from a song until there are no lyrics left. If there are not enough paragraphs in the song to fulfill `numberOfParagraphs` requested, it will pick another song and start from the beginning
+## Contributing
 
-- **Endpoint**: `/lyrics`
-- **Method**: GET
-- **Parameters**:
-  - `shouldRandomizeLyrics` (query parameter): Flag indicating whether to randomize the order of lyrics (boolean)
-  - `numberOfParagraphs` REQUIRED (query parameter): Number of paragraphs of lyrics to retrieve (integer)
-- **Example Request**: Returns 2 paragraphs of lyrics from songs from random songs.
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2"
-    ```
+Contributions are welcome! Please feel free to submit a pull request.
 
-- **Response**: Returns 2 paragraphs of lyrics from randomized songs songs.
+## License
 
-  ```json
-    {
-        "lyrics": [
-            "He says he doesn't believe anything much he hears these days\nHe says, \"Why fall in love, just so you can watch it go away?\"\nHe spends most of his nights wishing it was how it used to be\nHe spends most of his flights getting pulled down by gravity\nI call, just checking up on him\nHe's up, 3 A.M., pacing\nHe says, \"It's not just a phase I'm in\"\nMy voice comes out begging",
-            "All this time I didn't know\nYou were breaking down\nI'd fall to pieces on the floor\nIf you weren't around\nToo young to know it gets better\nI'll be summer sun for you forever\nForever winter if you go"
-        ],
-        "numParagraphs": 2
-    }
- ```
+This project is open source and available under the [MIT License](LICENSE).
