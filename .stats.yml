@@ -1,0 +1,4 @@
+configured_endpoints: 6
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/sarbo%2Ftaylorswiftlyricsapi-532a8a65b14d339c588dc4832f620b7b36b0d8003da4cb0b2374ada9fe1380f5.yml
+openapi_spec_hash: 7a0a4857f370196b13633957efe76eba
+config_hash: 61e5e2d48908f28ab08e54bbf14c12ba
