@@ -1,291 +1,370 @@
-# Taylor Swift API
+# Taylorswiftlyricsapi Python API library
 
-Peak traffic of 170k requests a day
+<!-- prettier-ignore -->
+[![PyPI version](https://img.shields.io/pypi/v/taylorswiftlyricsapi.svg?label=pypi%20(stable))](https://pypi.org/project/taylorswiftlyricsapi/)
 
-<img width="1499" alt="Screen Shot 2023-11-24 at 3 15 55 AM" src="https://github.com/sarbor/taylor_swift_api/assets/15257226/bb2723fb-5320-4242-8fd6-a8cb318e4b0b">
+The Taylorswiftlyricsapi Python library provides convenient access to the Taylorswiftlyricsapi REST API from any Python 3.9+
+application. The library includes type definitions for all request params and response fields,
+and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
+It is generated with [Stainless](https://www.stainless.com/).
 
-The Taylor Swift API allows you to access information about Taylor Swift's albums, songs, and lyrics. You can retrieve data such as album details, song info and lyrics for a specific song.
+## Documentation
 
-You can even request N verses of lyrics from the api to use as Lorem Ipsum.
+The full API of this library can be found in [api.md](api.md).
 
-This API is hosted on Cloudflare Workers and the data is stored inside PlanetScale
+## Installation
 
-[User Friendly Documentation for this API](https://bump.sh/sarbor/doc/taylor-swift-api)
+```sh
+# install from this staging repo
+pip install git+ssh://git@github.com/stainless-sdks/taylorswiftlyricsapi-python.git
+```
 
-Projects using this API
-+ [Taylor Ipsum Generator](https://taylor-ipsum-website.pages.dev/)
+> [!NOTE]
+> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install taylorswiftlyricsapi`
 
-## Base URL
+## Usage
 
-The API is hosted at: `https://taylor-swift-api.sarbo.workers.dev`
+The full API of this library can be found in [api.md](api.md).
 
-## Endpoints
+```python
+import os
+from taylorswiftlyricsapi import Taylorswiftlyricsapi
 
-### Get all albums
+client = Taylorswiftlyricsapi(
+    api_key=os.environ.get(
+        "TAYLORSWIFTLYRICSAPI_API_KEY"
+    ),  # This is the default and can be omitted
+)
 
-Returns all Taylor Swift Albums.
+albums = client.albums.list()
+```
 
-- **Endpoint**: `/albums`
-- **Method**: GET
-- **Example Request**: Gets lyrics for song with song_id 10
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/albums"
-    ```
-- **Response**: Returns an array of album objects.
+While you can provide an `api_key` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `TAYLORSWIFTLYRICSAPI_API_KEY="My API Key"` to your `.env` file
+so that your API Key is not stored in source control.
 
-  ```json
-  [
-    {
-      "album_id": 1,
-      "title": "1989",
-      "release_date": "2014-10-27"
-    },
-    {
-      "album_id": 2,
-      "title": "Taylor Swift",
-      "release_date": "2006-10-24"
-    },
-    ...
-  ]
-  ```
+## Async usage
 
+Simply import `AsyncTaylorswiftlyricsapi` instead of `Taylorswiftlyricsapi` and use `await` with each API call:
 
-### Get songs within an album
+```python
+import os
+import asyncio
+from taylorswiftlyricsapi import AsyncTaylorswiftlyricsapi
 
-Retrieve all songs within a specific album.
-
-- **Endpoint**: `/albums/{albumID}`
-- **Method**: GET
-- **Parameters**:
-  - `albumID` (integer, path): The ID of the album.
-
-- **Example Request**: Returns all somgs within album with album_id 10
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/albums/10"
-    ```
-- **Response**: Returns an array of song objects.
-
-  ```json
-  [
-    {
-        "song_id": 147,
-        "title": "Snow on the Beach",
-        "album_id": 10
-    },
-    {
-        "song_id": 148,
-        "title": "Maroon",
-        "album_id": 10
-    },
-    {
-        "song_id": 149,
-        "title": "Bejeweled",
-        "album_id": 10
-    },
-    {
-        "song_id": 150,
-        "title": "Labyrinth",
-        "album_id": 10
-    },
-    {
-        "song_id": 151,
-        "title": "Mastermind",
-        "album_id": 10
-    },
-    {
-        "song_id": 152,
-        "title": "Lavender Haze",
-        "album_id": 10
-    },
-    {
-        "song_id": 153,
-        "title": "Sweet Nothing",
-        "album_id": 10
-    },
-    {
-        "song_id": 154,
-        "title": "Vigilante Shit",
-        "album_id": 10
-    },
-    {
-        "song_id": 155,
-        "title": "Midnight Rain",
-        "album_id": 10
-    },
-    {
-        "song_id": 156,
-        "title": "Karma",
-        "album_id": 10
-    },
-    {
-        "song_id": 157,
-        "title": "Anti-Hero",
-        "album_id": 10
-    },
-    {
-        "song_id": 158,
-        "title": "Question…?",
-        "album_id": 10
-    },
-    {
-        "song_id": 159,
-        "title": "You're on Your Own, Kid",
-        "album_id": 10
-    },
-    {
-        "song_id": 160,
-        "title": "The Great War",
-        "album_id": 10
-    },
-    {
-        "song_id": 161,
-        "title": "High Infidelity",
-        "album_id": 10
-    },
-    {
-        "song_id": 162,
-        "title": "Would've, Could've, Should've",
-        "album_id": 10
-    },
-    {
-        "song_id": 163,
-        "title": "Bigger Than the Whole Sky",
-        "album_id": 10
-    },
-    {
-        "song_id": 164,
-        "title": "Paris",
-        "album_id": 10
-    },
-    {
-        "song_id": 165,
-        "title": "Glitch",
-        "album_id": 10
-    },
-    {
-        "song_id": 166,
-        "title": "Dear Reader",
-        "album_id": 10
-    },
-    {
-        "song_id": 176,
-        "title": "Hits Different",
-        "album_id": 10
-    },
-    {
-        "song_id": 177,
-        "title": "You're Losing Me",
-        "album_id": 10
-    }
-  ]
-   ```
- 
-
-### Get all songs
-
-Retrieve all songs within ALL albums.
-
-- **Endpoint**: `/songs`
-- **Method**: GET
-- **Example Request**: Gets all songs
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/songs"
-    ```
-- **Response**: Returns an array of song objects.
-
-  ```json
-  [
-    {
-      "song_id": 1,
-      "title": "Blank Space",
-      "album_id": 1
-    },
-    {
-      "song_id": 2,
-      "title": "Style",
-      "album_id": 1
-    },
-    ...
-  ]
-  ```
+client = AsyncTaylorswiftlyricsapi(
+    api_key=os.environ.get(
+        "TAYLORSWIFTLYRICSAPI_API_KEY"
+    ),  # This is the default and can be omitted
+)
 
 
-### Get song information for a specific song
-
-Retrieve song information for a specific song.
-
-- **Endpoint**: `/songs/{songID}`
-- **Method**: GET
-- **Parameters**:
-  - `songID` (path parameter): ID of the song (integer)
-- **Example Request**: Gets song info for song with song_id 10
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/songs/10"
-    ```
-- **Response**: Returns a song object.
-
-  ```json
-  {
-    "song_id": 10,
-    "song_title": "Wonderland",
-    "album_id": 1
-  }
-  ```
+async def main() -> None:
+    albums = await client.albums.list()
 
 
-### Get lyrics for a given song
+asyncio.run(main())
+```
 
-Retrieve the lyrics for a given song.
+Functionality between the synchronous and asynchronous clients is otherwise identical.
 
-- **Endpoint**: `/lyrics/{songID}`
-- **Method**: GET
-- **Parameters**:
-  - `songID` (path parameter): ID of the song (integer)
-- **Example Request**: Gets lyrics for song with song_id 10
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/lyrics/10"
-    ```
-- **Response**: Returns a song's lyrics.
+### With aiohttp
 
-  ```json
-  {
-    "song_id": 10,
-    "song_title": "Wonderland",
-    "lyrics": "Flashing lights and we\nTook a wrong turn and we\nFell down a rabbit hole\n\nYou held on tight to me\n'Cause nothing's as it seems\nAnd spinning out of control\n\nDidn't they tell us don't rush into things?\nDidn't you flash your green eyes at me?\nHaven't you heard what becomes of curious minds?\n\nOh\n\nDidn't it all seem new and exciting?\nI felt your arms twisting around me\nI should have slept with one eye open at night\n\nWe found wonderland\nYou and I got lost in it\nAnd we pretended it could last forever\nEh\nWe found wonderland\nYou and I got lost in it\nAnd life was never worse but never better\nEh eh\n\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\n\nSo we went on our way\nToo in love to think straight\nAll alone or so it seemed\n\nBut there were strangers watching\nAnd whispers turned to talking\nAnd talking turned to screams\n\nOh\n\nDidn't they tell us don't rush into things?\nDidn't you flash your green eyes at me?\nDidn't you calm my fears with a Cheshire cat smile?\n\nOh\n\nDidn't it all seem new and exciting?\nI felt your arms twisting around me\nIt's all fun and games 'til somebody loses their mind\n\nBut darling, we found wonderland\nYou and I got lost in it\nAnd we pretended it could last forever\nEh\nWe found wonderland\nYou and I got lost in it\nAnd life was never worse but never better\nEh eh\n\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\nEh eh eh eh eh\nIn wonderland\n\nI reached for you but you were gone\nI knew I had to go back home\nYou searched the world for something else to make you feel like what we had\nAnd in the end in wonderland we both went mad\n\nOh\n\nWe found wonderland\nYou and I got lost in it\nAnd we pretended it could last forever (last forever)\nEh eh\nWe found wonderland\nYou and I got lost in it (got lost in it)\nAnd life was never worse but never better (never better)\nEh eh\n\nWe found wonderland\nYou and I got lost in it (wonderland)\nAnd we pretended it could last forever (in wonderland)\n\nWe found wonderland\nYou and I got lost in it (wonderland)\nAnd life was never worse but never better\nIn wonderland"
-  }
-  ```
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
 
-### Get N Paragraphs of Lyrics
+You can enable this by installing `aiohttp`:
 
-Retrieve N paragraphs of lyrics from songs. The songs can be either random or in the default order.
+```sh
+# install from this staging repo
+pip install 'taylorswiftlyricsapi[aiohttp] @ git+ssh://git@github.com/stainless-sdks/taylorswiftlyricsapi-python.git'
+```
 
-The endpoint will keep retrieving lyrics from a song until there are no lyrics left. If there are not enough paragraphs in the song to fulfill `numberOfParagraphs` requested, it will pick another song and start from the beginning
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
-- **Endpoint**: `/lyrics`
-- **Method**: GET
-- **Parameters**:
-  - `shouldRandomizeLyrics` (query parameter): Flag indicating whether to randomize the order of lyrics (boolean)
-  - `numberOfParagraphs` REQUIRED (query parameter): Number of paragraphs of lyrics to retrieve (integer)
-- **Example Request**: Returns 2 paragraphs of lyrics from songs from random songs.
-    ```bash
-    curl \
-    -X GET "https://taylor-swift-api.sarbo.workers.dev/lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2"
-    ```
+```python
+import os
+import asyncio
+from taylorswiftlyricsapi import DefaultAioHttpClient
+from taylorswiftlyricsapi import AsyncTaylorswiftlyricsapi
 
-- **Response**: Returns 2 paragraphs of lyrics from randomized songs songs.
 
-  ```json
-    {
-        "lyrics": [
-            "He says he doesn't believe anything much he hears these days\nHe says, \"Why fall in love, just so you can watch it go away?\"\nHe spends most of his nights wishing it was how it used to be\nHe spends most of his flights getting pulled down by gravity\nI call, just checking up on him\nHe's up, 3 A.M., pacing\nHe says, \"It's not just a phase I'm in\"\nMy voice comes out begging",
-            "All this time I didn't know\nYou were breaking down\nI'd fall to pieces on the floor\nIf you weren't around\nToo young to know it gets better\nI'll be summer sun for you forever\nForever winter if you go"
-        ],
-        "numParagraphs": 2
-    }
- ```
+async def main() -> None:
+    async with AsyncTaylorswiftlyricsapi(
+        api_key=os.environ.get(
+            "TAYLORSWIFTLYRICSAPI_API_KEY"
+        ),  # This is the default and can be omitted
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        albums = await client.albums.list()
+
+
+asyncio.run(main())
+```
+
+## Using types
+
+Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev) which also provide helper methods for things like:
+
+- Serializing back into JSON, `model.to_json()`
+- Converting to a dictionary, `model.to_dict()`
+
+Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## Handling errors
+
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `taylorswiftlyricsapi.APIConnectionError` is raised.
+
+When the API returns a non-success status code (that is, 4xx or 5xx
+response), a subclass of `taylorswiftlyricsapi.APIStatusError` is raised, containing `status_code` and `response` properties.
+
+All errors inherit from `taylorswiftlyricsapi.APIError`.
+
+```python
+import taylorswiftlyricsapi
+from taylorswiftlyricsapi import Taylorswiftlyricsapi
+
+client = Taylorswiftlyricsapi()
+
+try:
+    client.albums.list()
+except taylorswiftlyricsapi.APIConnectionError as e:
+    print("The server could not be reached")
+    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
+except taylorswiftlyricsapi.RateLimitError as e:
+    print("A 429 status code was received; we should back off a bit.")
+except taylorswiftlyricsapi.APIStatusError as e:
+    print("Another non-200-range status code was received")
+    print(e.status_code)
+    print(e.response)
+```
+
+Error codes are as follows:
+
+| Status Code | Error Type                 |
+| ----------- | -------------------------- |
+| 400         | `BadRequestError`          |
+| 401         | `AuthenticationError`      |
+| 403         | `PermissionDeniedError`    |
+| 404         | `NotFoundError`            |
+| 422         | `UnprocessableEntityError` |
+| 429         | `RateLimitError`           |
+| >=500       | `InternalServerError`      |
+| N/A         | `APIConnectionError`       |
+
+### Retries
+
+Certain errors are automatically retried 2 times by default, with a short exponential backoff.
+Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
+429 Rate Limit, and >=500 Internal errors are all retried by default.
+
+You can use the `max_retries` option to configure or disable retry settings:
+
+```python
+from taylorswiftlyricsapi import Taylorswiftlyricsapi
+
+# Configure the default for all requests:
+client = Taylorswiftlyricsapi(
+    # default is 2
+    max_retries=0,
+)
+
+# Or, configure per-request:
+client.with_options(max_retries=5).albums.list()
+```
+
+### Timeouts
+
+By default requests time out after 1 minute. You can configure this with a `timeout` option,
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
+
+```python
+from taylorswiftlyricsapi import Taylorswiftlyricsapi
+
+# Configure the default for all requests:
+client = Taylorswiftlyricsapi(
+    # 20 seconds (default is 1 minute)
+    timeout=20.0,
+)
+
+# More granular control:
+client = Taylorswiftlyricsapi(
+    timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
+)
+
+# Override per-request:
+client.with_options(timeout=5.0).albums.list()
+```
+
+On timeout, an `APITimeoutError` is thrown.
+
+Note that requests that time out are [retried twice by default](#retries).
+
+## Advanced
+
+### Logging
+
+We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
+
+You can enable logging by setting the environment variable `TAYLORSWIFTLYRICSAPI_LOG` to `info`.
+
+```shell
+$ export TAYLORSWIFTLYRICSAPI_LOG=info
+```
+
+Or to `debug` for more verbose logging.
+
+### How to tell whether `None` means `null` or missing
+
+In an API response, a field may be explicitly `null`, or missing entirely; in either case, its value is `None` in this library. You can differentiate the two cases with `.model_fields_set`:
+
+```py
+if response.my_field is None:
+  if 'my_field' not in response.model_fields_set:
+    print('Got json like {}, without a "my_field" key present at all.')
+  else:
+    print('Got json like {"my_field": null}.')
+```
+
+### Accessing raw response data (e.g. headers)
+
+The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
+
+```py
+from taylorswiftlyricsapi import Taylorswiftlyricsapi
+
+client = Taylorswiftlyricsapi()
+response = client.albums.with_raw_response.list()
+print(response.headers.get('X-My-Header'))
+
+album = response.parse()  # get the object that `albums.list()` would have returned
+print(album)
+```
+
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/taylorswiftlyricsapi-python/tree/main/src/taylorswiftlyricsapi/_response.py) object.
+
+The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/taylorswiftlyricsapi-python/tree/main/src/taylorswiftlyricsapi/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+
+#### `.with_streaming_response`
+
+The above interface eagerly reads the full response body when you make the request, which may not always be what you want.
+
+To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
+
+```python
+with client.albums.with_streaming_response.list() as response:
+    print(response.headers.get("X-My-Header"))
+
+    for line in response.iter_lines():
+        print(line)
+```
+
+The context manager is required so that the response will reliably be closed.
+
+### Making custom/undocumented requests
+
+This library is typed for convenient access to the documented API.
+
+If you need to access undocumented endpoints, params, or response properties, the library can still be used.
+
+#### Undocumented endpoints
+
+To make requests to undocumented endpoints, you can make requests using `client.get`, `client.post`, and other
+http verbs. Options on the client will be respected (such as retries) when making this request.
+
+```py
+import httpx
+
+response = client.post(
+    "/foo",
+    cast_to=httpx.Response,
+    body={"my_param": True},
+)
+
+print(response.headers.get("x-foo"))
+```
+
+#### Undocumented request params
+
+If you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` request
+options.
+
+#### Undocumented response properties
+
+To access undocumented response properties, you can access the extra fields like `response.unknown_prop`. You
+can also get all the extra fields on the Pydantic model as a dict with
+[`response.model_extra`](https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel.model_extra).
+
+### Configuring the HTTP client
+
+You can directly override the [httpx client](https://www.python-httpx.org/api/#client) to customize it for your use case, including:
+
+- Support for [proxies](https://www.python-httpx.org/advanced/proxies/)
+- Custom [transports](https://www.python-httpx.org/advanced/transports/)
+- Additional [advanced](https://www.python-httpx.org/advanced/clients/) functionality
+
+```python
+import httpx
+from taylorswiftlyricsapi import Taylorswiftlyricsapi, DefaultHttpxClient
+
+client = Taylorswiftlyricsapi(
+    # Or use the `TAYLORSWIFTLYRICSAPI_BASE_URL` env var
+    base_url="http://my.test.server.example.com:8083",
+    http_client=DefaultHttpxClient(
+        proxy="http://my.test.proxy.example.com",
+        transport=httpx.HTTPTransport(local_address="0.0.0.0"),
+    ),
+)
+```
+
+You can also customize the client on a per-request basis by using `with_options()`:
+
+```python
+client.with_options(http_client=DefaultHttpxClient(...))
+```
+
+### Managing HTTP resources
+
+By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
+
+```py
+from taylorswiftlyricsapi import Taylorswiftlyricsapi
+
+with Taylorswiftlyricsapi() as client:
+  # make requests here
+  ...
+
+# HTTP client is now closed
+```
+
+## Versioning
+
+This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
+
+1. Changes that only affect static types, without breaking runtime behavior.
+2. Changes to library internals which are technically public but not intended or documented for external use. _(Please open a GitHub issue to let us know if you are relying on such internals.)_
+3. Changes that we do not expect to impact the vast majority of users in practice.
+
+We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
+
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/taylorswiftlyricsapi-python/issues) with questions, bugs, or suggestions.
+
+### Determining the installed version
+
+If you've upgraded to the latest version but aren't seeing any new features you were expecting then your python environment is likely still using an older version.
+
+You can determine the version that is being used at runtime with:
+
+```py
+import taylorswiftlyricsapi
+print(taylorswiftlyricsapi.__version__)
+```
+
+## Requirements
+
+Python 3.9 or higher.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).
