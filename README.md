@@ -9,7 +9,7 @@ The Taylor Swift API allows you to access information about Taylor Swift's album
 
 You can even request N verses of lyrics from the api to use as Lorem Ipsum.
 
-This API is hosted on Cloudflare Workers and the data is stored inside PlanetScale
+This API is hosted on Cloudflare Workers and the data is stored inside Cloudflare D1
 
 [User Friendly Documentation for this API](https://bump.sh/sarbor/doc/taylor-swift-api)
 
@@ -26,9 +26,7 @@ The API is hosted at: `https://taylor-swift-api.sarbo.workers.dev`
 
 Returns all Taylor Swift Albums.
 
-- **Endpoint**: `/albums`
-- **Method**: GET
-- **Example Request**: Gets lyrics for song with song_id 10
+- **Example Request**: Gets all albums.
     ```bash
     curl \
     -X GET "https://taylor-swift-api.sarbo.workers.dev/albums"
@@ -61,7 +59,7 @@ Retrieve all songs within a specific album.
 - **Parameters**:
   - `albumID` (integer, path): The ID of the album.
 
-- **Example Request**: Returns all somgs within album with album_id 10
+- **Example Request**: Returns all songs within album with album_id 10.
     ```bash
     curl \
     -X GET "https://taylor-swift-api.sarbo.workers.dev/albums/10"
@@ -221,7 +219,7 @@ Retrieve song information for a specific song.
 - **Endpoint**: `/songs/{songID}`
 - **Method**: GET
 - **Parameters**:
-  - `songID` (path parameter): ID of the song (integer)
+  - `songID` (integer, path): ID of the song.
 - **Example Request**: Gets song info for song with song_id 10
     ```bash
     curl \
@@ -245,7 +243,7 @@ Retrieve the lyrics for a given song.
 - **Endpoint**: `/lyrics/{songID}`
 - **Method**: GET
 - **Parameters**:
-  - `songID` (path parameter): ID of the song (integer)
+  - `songID` (integer, path): ID of the song.
 - **Example Request**: Gets lyrics for song with song_id 10
     ```bash
     curl \
@@ -270,15 +268,15 @@ The endpoint will keep retrieving lyrics from a song until there are no lyrics l
 - **Endpoint**: `/lyrics`
 - **Method**: GET
 - **Parameters**:
-  - `shouldRandomizeLyrics` (query parameter): Flag indicating whether to randomize the order of lyrics (boolean)
-  - `numberOfParagraphs` REQUIRED (query parameter): Number of paragraphs of lyrics to retrieve (integer)
-- **Example Request**: Returns 2 paragraphs of lyrics from songs from random songs.
+  - `shouldRandomizeLyrics` (boolean, query): Flag indicating whether to randomize the order of lyrics.
+  - `numberOfParagraphs` (integer, query): **Required**. Number of paragraphs of lyrics to retrieve.
+- **Example Request**: Returns 2 paragraphs of lyrics from random songs.
     ```bash
     curl \
     -X GET "https://taylor-swift-api.sarbo.workers.dev/lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2"
     ```
 
-- **Response**: Returns 2 paragraphs of lyrics from randomized songs songs.
+- **Response**: Returns 2 paragraphs of lyrics from randomized songs.
 
   ```json
     {
