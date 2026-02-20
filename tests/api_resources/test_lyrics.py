@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestLyrics:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Taylorswiftlyricsapi) -> None:
         lyric = client.lyrics.retrieve(
@@ -25,7 +25,7 @@ class TestLyrics:
         )
         assert_matches_type(LyricRetrieveResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Taylorswiftlyricsapi) -> None:
         response = client.lyrics.with_raw_response.retrieve(
@@ -37,7 +37,7 @@ class TestLyrics:
         lyric = response.parse()
         assert_matches_type(LyricRetrieveResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Taylorswiftlyricsapi) -> None:
         with client.lyrics.with_streaming_response.retrieve(
@@ -51,13 +51,13 @@ class TestLyrics:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Taylorswiftlyricsapi) -> None:
         lyric = client.lyrics.list()
         assert_matches_type(LyricListResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Taylorswiftlyricsapi) -> None:
         lyric = client.lyrics.list(
@@ -66,7 +66,7 @@ class TestLyrics:
         )
         assert_matches_type(LyricListResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Taylorswiftlyricsapi) -> None:
         response = client.lyrics.with_raw_response.list()
@@ -76,7 +76,7 @@ class TestLyrics:
         lyric = response.parse()
         assert_matches_type(LyricListResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Taylorswiftlyricsapi) -> None:
         with client.lyrics.with_streaming_response.list() as response:
@@ -94,7 +94,7 @@ class TestAsyncLyrics:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         lyric = await async_client.lyrics.retrieve(
@@ -102,7 +102,7 @@ class TestAsyncLyrics:
         )
         assert_matches_type(LyricRetrieveResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         response = await async_client.lyrics.with_raw_response.retrieve(
@@ -114,7 +114,7 @@ class TestAsyncLyrics:
         lyric = await response.parse()
         assert_matches_type(LyricRetrieveResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         async with async_client.lyrics.with_streaming_response.retrieve(
@@ -128,13 +128,13 @@ class TestAsyncLyrics:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         lyric = await async_client.lyrics.list()
         assert_matches_type(LyricListResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         lyric = await async_client.lyrics.list(
@@ -143,7 +143,7 @@ class TestAsyncLyrics:
         )
         assert_matches_type(LyricListResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         response = await async_client.lyrics.with_raw_response.list()
@@ -153,7 +153,7 @@ class TestAsyncLyrics:
         lyric = await response.parse()
         assert_matches_type(LyricListResponse, lyric, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         async with async_client.lyrics.with_streaming_response.list() as response:
