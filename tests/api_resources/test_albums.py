@@ -17,13 +17,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestAlbums:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Taylorswiftlyricsapi) -> None:
         album = client.albums.list()
         assert_matches_type(AlbumListResponse, album, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Taylorswiftlyricsapi) -> None:
         response = client.albums.with_raw_response.list()
@@ -33,7 +33,7 @@ class TestAlbums:
         album = response.parse()
         assert_matches_type(AlbumListResponse, album, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Taylorswiftlyricsapi) -> None:
         with client.albums.with_streaming_response.list() as response:
@@ -45,7 +45,7 @@ class TestAlbums:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve_songs(self, client: Taylorswiftlyricsapi) -> None:
         album = client.albums.retrieve_songs(
@@ -53,7 +53,7 @@ class TestAlbums:
         )
         assert_matches_type(AlbumRetrieveSongsResponse, album, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve_songs(self, client: Taylorswiftlyricsapi) -> None:
         response = client.albums.with_raw_response.retrieve_songs(
@@ -65,7 +65,7 @@ class TestAlbums:
         album = response.parse()
         assert_matches_type(AlbumRetrieveSongsResponse, album, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve_songs(self, client: Taylorswiftlyricsapi) -> None:
         with client.albums.with_streaming_response.retrieve_songs(
@@ -85,13 +85,13 @@ class TestAsyncAlbums:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         album = await async_client.albums.list()
         assert_matches_type(AlbumListResponse, album, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         response = await async_client.albums.with_raw_response.list()
@@ -101,7 +101,7 @@ class TestAsyncAlbums:
         album = await response.parse()
         assert_matches_type(AlbumListResponse, album, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         async with async_client.albums.with_streaming_response.list() as response:
@@ -113,7 +113,7 @@ class TestAsyncAlbums:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve_songs(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         album = await async_client.albums.retrieve_songs(
@@ -121,7 +121,7 @@ class TestAsyncAlbums:
         )
         assert_matches_type(AlbumRetrieveSongsResponse, album, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve_songs(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         response = await async_client.albums.with_raw_response.retrieve_songs(
@@ -133,7 +133,7 @@ class TestAsyncAlbums:
         album = await response.parse()
         assert_matches_type(AlbumRetrieveSongsResponse, album, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve_songs(self, async_client: AsyncTaylorswiftlyricsapi) -> None:
         async with async_client.albums.with_streaming_response.retrieve_songs(
