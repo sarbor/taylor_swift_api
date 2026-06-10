@@ -11,7 +11,7 @@ You can even request N verses of lyrics from the api to use as Lorem Ipsum.
 
 This API is hosted on Cloudflare Workers and the data is stored inside Cloudflare D1
 
-[User Friendly Documentation for this API](https://bump.sh/sarbor/doc/taylor-swift-api)
+[User Friendly Documentation for this API](https://sarbor-taylor_swift_api.mintlify.app/introduction)
 
 Projects using this API
 + [Taylor Ipsum Generator](https://taylor-ipsum-website.pages.dev/)
