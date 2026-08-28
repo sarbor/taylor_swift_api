@@ -144,6 +144,12 @@ paths:
           schema:
             type: string
             enum: [true, false]
+        - name: includeSongMetadata
+          in: query
+          description: Include an items array with the source song for each lyric paragraph
+          schema:
+            type: boolean
+            default: false
         - name: numberOfParagraphs
           in: query
           description: Number of paragraphs of lyrics to retrieve
@@ -164,6 +170,22 @@ paths:
                       type: string
                   num_paragraphs:
                     type: integer
+                  items:
+                    type: array
+                    description: Included only when includeSongMetadata is true
+                    items:
+                      type: object
+                      required:
+                        - content
+                        - song_id
+                        - song_title
+                      properties:
+                        content:
+                          type: string
+                        song_id:
+                          type: integer
+                        song_title:
+                          type: string
         '400':
           description: Invalid request parameters
         '500':

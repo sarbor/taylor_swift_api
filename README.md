@@ -270,6 +270,7 @@ The endpoint will keep retrieving lyrics from a song until there are no lyrics l
 - **Parameters**:
   - `shouldRandomizeLyrics` (boolean, query): Flag indicating whether to randomize the order of lyrics.
   - `numberOfParagraphs` (integer, query): **Required**. Number of paragraphs of lyrics to retrieve.
+  - `includeSongMetadata` (boolean, query): Optional. Set to `true` to identify the source song for each paragraph. Defaults to `false`.
 - **Example Request**: Returns 2 paragraphs of lyrics from random songs.
     ```bash
     curl \
@@ -284,6 +285,38 @@ The endpoint will keep retrieving lyrics from a song until there are no lyrics l
             "He says he doesn't believe anything much he hears these days\nHe says, \"Why fall in love, just so you can watch it go away?\"\nHe spends most of his nights wishing it was how it used to be\nHe spends most of his flights getting pulled down by gravity\nI call, just checking up on him\nHe's up, 3 A.M., pacing\nHe says, \"It's not just a phase I'm in\"\nMy voice comes out begging",
             "All this time I didn't know\nYou were breaking down\nI'd fall to pieces on the floor\nIf you weren't around\nToo young to know it gets better\nI'll be summer sun for you forever\nForever winter if you go"
         ],
-        "numParagraphs": 2
+        "num_paragraphs": 2
     }
  ```
+
+By default, `lyrics` remains an array of strings for backwards compatibility. To include
+the song ID and title for every paragraph, set `includeSongMetadata=true`:
+
+```bash
+curl \
+-X GET "https://taylor-swift-api.sarbo.workers.dev/lyrics?shouldRandomizeLyrics=true&numberOfParagraphs=2&includeSongMetadata=true"
+```
+
+The response adds an `items` array while preserving the original `lyrics` field:
+
+```json
+{
+  "lyrics": [
+    "First lyric paragraph",
+    "Second lyric paragraph"
+  ],
+  "num_paragraphs": 2,
+  "items": [
+    {
+      "content": "First lyric paragraph",
+      "song_id": 42,
+      "song_title": "Song title"
+    },
+    {
+      "content": "Second lyric paragraph",
+      "song_id": 17,
+      "song_title": "Another song title"
+    }
+  ]
+}
+```
